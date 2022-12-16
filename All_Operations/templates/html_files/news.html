@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row mt-5 pt-5 text-center">
+        <b class="news_heading">NEWS</b>
+    </div> 
+
+    <!--news streaming row1 start-->
+         <div class="row pd_style">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10" style="display:flex;">
+                <div class="card pd1" style="width:14rem;height:20rem;">
+                    <img class="card-img-top" src="{% static 'images/slide3.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">BUSSINESS NEWS</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+
+                <div class="card pd2" style="width: 15rem;height:22rem;">
+                    <img class="card-img-top" src="{% static 'images/slide4.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">SOCIAL NEWS</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+
+                <div class="card pd_middle" style="width: 18rem;height:24rem;">
+                    <img class="card-img-top" src="{% static 'images/education.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">EDUCATIONAL NEWS</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+
+                <div class="card pd3" style="width: 15rem;height:22rem;">
+                    <img class="card-img-top" src="{% static 'images/bg6.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">TECH NEWS</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+
+                <div class="card pd4" style="width:14rem;height:20rem;">
+                    <img class="card-img-top" src="{% static 'images/cyber.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">CYBER NEWS</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <!--news streaming row1 end-->
+        <marquee><b style="color:darkblue;">TOP TRENDING NEWS</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:darkblue;">TOP HEADLINES</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:darkblue;">CYBER NEWS</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:darkblue;">TODAYS TOP NEWS</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:darkblue;">BUSINESS NEWS</b></marquee>
+
+    <div class="row">
+        <!--education news start-->
+        <div class="col-sm-6">
+            <div><h3 style="background:rgba(220,200,180,0.7);">Educational News</h3></div>
+            {% if data %}
+            {% for x in data %}
+            <div class="card mb-3" style="width:100%;height:190px;">
+                <div class="row g-0">
+                    <div class="col-md-4 pt-3">
+                        <img src="/{{x.newspic}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body pt-3" style="box-sizing:border-box;">
+                            <h5 class="card-title">{{x.newsname}}</h5>
+                            <a href="{{x.newslink}}"><b>{{x.newslink}}</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+         </div>
+         <!---education news ends-->
+
+         <!--technology new start-->
+        <div class="col-sm-6">
+            <div><h3 style=" background:rgba(220,200,180,0.7);">Technology News</h3></div>
+            {% if tech %}
+            {% for x in tech %}
+            <div class="card mb-3" style="width:100%;height:190px;">
+                <div class="row g-0">
+                    <div class="col-md-4 pt-3">
+                        <img src="/{{x.newspic1}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body pt-3" style="box-sizing:border-box;>
+                            <h5 class="card-title">{{x.newsname1}}</h5>
+                            <a href="{{x.newslink1}}"><b>{{x.newslink1}}</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <!--technology news ends-->
+    </div>
+    <div class="row">
+    <!--cyber news start-->
+        <div class="col-sm-4">
+            <div> <h3 style="background:rgba(220,200,180,0.7);">Cyber News</h3></div>
+            {% if cbrnews %}
+            {% for x in cbrnews %}
+            <div class="card mb-3" style="width:100%;height:240px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/{{x.newspic2}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="box-sizing:border-box;">
+                            <h5 class="card-title">{{x.newsname2}}</h5>
+                            <a href="{{x.newslink2}}"><b>{{x.newslink2}}</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+     <!--cyber news ends-->
+        
+     <!--BUSSINESS news start-->   
+     <div class="col-sm-4"> 
+            <div><h3 style=" background:rgba(220,200,180,0.7);">Business News</h3></div>
+            {% if business %}
+            {% for x in business %}
+            <div class="card mb-3" style="width:100%;height:240px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/{{x.newspic3}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{x.newsname3}}</h5>
+                            <a href="{{x.newslink3}}"><b>{{x.newslink3}}</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+    </div>
+        <!--BUSINESS news ends-->
+
+        <!--social news start-->   
+        <div class="col-sm-4">
+            <div><h3 style=" background:rgba(220,200,180,0.7);">Social News</h3></div>
+            {% if social %}
+            {% for x in social %}
+            <div class="card mb-3" style="width:100%;height:240px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/{{x.newspic4}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{x.newsname4}}</h5>
+                            <a href="{{x.newslink4}}"><b>{{x.newslink4}}</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <!--social news ends-->   
+    </div>
+</div>
+{% endblock %}
+

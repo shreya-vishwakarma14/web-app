@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h3 class="animate-charcter">OPERATING SYSTEM</h3>
+		</div>
+		<h4 class="mt-4 text-center" style="font-family:times of roman;">
+			Welcome to MixDoc, from here user can download any type of Operating System as his requirements.
+		</h4>
+		<div style="border-bottom:4px groove black;" class="mt-4"></div>
+	</div>
+    <h3 class="mt-4"><span style="border-bottom:2px groove black;">Download OS</span> :</h3>
+	<div class="container mt-2">
+		{% if oscard %}
+        {% for x in oscard %}
+			<div class="card-block card_os">
+					<div class="card_text" style="color:black;">
+      					<img src="/{{x.os_img}}" alt="Photo of sunset" class="img_os">
+						<h5 class="card-title mt-3 mb-3" style="padding-left: 10px;"><span style="border-bottom: 2px solid maroon;">{{x.os_title}}</span></h5>
+        				<p class="card-text" style="padding-left: 10px; font-family:'Times New Roman', Times, serif;">{{x.os_discription}}</p>
+						<a href="{{x.os_moreinfo}}" style="text-decoration:none;">More Info</a>
+						<a href="{{x.os_download}}" class="btn btn-danger" style="margin-left:100px; font-size:12px;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+  								<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+  								<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+							</svg>
+						</a><br>
+					</div>
+  			</div>
+		{% endfor %}
+        {% endif %}
+	</div>
+	<div class="container mt-2">
+		{% if oscard1 %}
+        {% for x in oscard1 %}
+			<div class="card-block card_os" style="margin-top:-100px;">
+					<div class="card_text" style="color:black;">
+      					<img src="/{{x.os_img1}}" alt="Photo of sunset" class="img_os">
+						<h5 class="card-title mt-3 mb-3" style="padding-left: 10px;"><span style="border-bottom: 2px solid maroon;">{{x.os_title1}}</span></h5>
+        				<p class="card-text" style="padding-left: 10px; font-family:'Times New Roman', Times, serif;">{{x.os_discription1}}</p>
+						<a href="{{x.os_moreinfo1}}" style="text-decoration:none;">More Info</a>
+						<a href="{{x.os_download1}}" class="btn btn-danger" style="margin-left:100px; font-size:12px;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+  								<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+  								<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+							</svg>
+						</a><br>
+					</div>
+  			</div>
+		{% endfor %}
+        {% endif %}
+	</div>
+	<div class="container mt-2">
+		{% if oscard2 %}
+        {% for x in oscard2 %}
+			<div class="card-block card_os" style="margin-top:-200px;">
+					<div class="card_text" style="color:black;">
+      					<img src="/{{x.os_img2}}" alt="Photo of sunset" class="img_os">
+						<h5 class="card-title mt-3 mb-3" style="padding-left: 10px;"><span style="border-bottom: 2px solid maroon;">{{x.os_title2}}</span></h5>
+        				<p class="card-text" style="padding-left: 10px; font-family:'Times New Roman', Times, serif;">{{x.os_discription2}}</p>
+						<a href="{{x.os_moreinfo2}}" style="text-decoration:none;">More Info</a>
+						<a href="{{x.os_download2}}" class="btn btn-danger" style="margin-left:100px; font-size:12px;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+  								<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+  								<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+							</svg>
+						</a><br>
+					</div>
+  			</div>
+		{% endfor %}
+        {% endif %}
+	</div>
+</div>
+  		<!--<div class="row row_os">
+    		<div class="col-md-3 col-sm-6">
+      			<div class="card_os card-block">
+      				<img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset" class="img_os">
+        			<h5 class="card-title_os mt-3 mb-3">Sierra Web Development • Owner</h5>
+        			<p class="card-text_os">This is a company that builds websites, web apps and e-commerce solutions.</p> 
+  				</div>
+    		</div>
+    	<div class="col-md-3 col-sm-6">
+      		<div class="card_os card-block">
+    			<img src="https://static.pexels.com/photos/7357/startup-photos.jpg" alt="Photo of sunset" class="img_os">
+        		<h5 class="card-title_os  mt-3 mb-3">ProVyuh</h5>
+        		<p class="card-text_os">This is a company that builds websites, web .</p> 
+  			</div>
+    	</div>
+    	<div class="col-md-3 col-sm-6">
+      		<div class="card_os card-block">
+    			<img src="https://static.pexels.com/photos/262550/pexels-photo-262550.jpeg" alt="Photo of sunset" class="img_os">
+        		<h5 class="card-title_os  mt-3 mb-3">ProVyuh</h5>
+        		<p class="card-text_os">This is a company that builds websites, web apps and e-commerce solutions.</p> 
+  			</div>
+    	</div>
+    	<div class="col-md-3 col-sm-6">
+      		<div class="card_os card-block">
+    			<img src="https://static.pexels.com/photos/326424/pexels-photo-326424.jpeg" alt="Photo of sunset" class="img_os">
+        		<h5 class="card-title_os  mt-3 mb-3">ProVyuh</h5>
+        		<p class="card-text_os">This is a company that builds websites, web apps and e-commerce solutions.</p> 
+  			</div>
+    	</div> -->
+		
+{% endblock %}

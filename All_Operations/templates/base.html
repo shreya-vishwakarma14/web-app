@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js.map' %}"></script>
+    <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'images/icon.jpg' %}">
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <style>
+        .image_style {
+            background: url("https://wallpapercave.com/wp/wp6941054.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0px auto;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .x {
+            min-height: 600px;
+            min-width: 500px;
+            margin: 0px auto;
+            background-color: #090404;
+            border: 1px solid black;
+            opacity: 0.6;
+            box-sizing: border-box;
+            background-size: cover;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+
+        .bg1 {
+            background: rgba(180, 180, 180, 0.5);
+            min-height: 600px;
+        }
+
+        .form_style {
+            color: black;
+            border-radius: 10px;
+            border-bottom: 2px solid black;
+            background-image: linear-gradient(to right, rgba(134, 134, 134, 0), rgba(250, 129, 159, 0.5));
+        }
+
+        .button_style {
+            border-radius: 10px;
+            min-height: 40px;
+            color: white;
+            font-style: initial;
+            font-size: 20px;
+            background-color: #c71b46;
+        }
+
+        input:hover {
+            border: 2px solid rgb(147, 204, 214);
+            color: black;
+            background-color: rgba(21, 119, 103, 0.5);
+        }
+
+        textarea:hover {
+            border: 2px solid rgb(147, 204, 214);
+            color: black;
+            background-color: rgba(21, 119, 103, 0.5);
+        }
+
+        .shadow_line {
+            box-shadow: 0px 20px 30px 10px black;
+        }
+
+        button:hover {
+            background: #195a54;
+            box-shadow: 0 0 5px #195a54, 0 0 25px #195a54, 0 0 58px #195a54, 0 0 200px #195a54;
+        }
+
+        .bg {
+            background: url('https://wallpapercave.com/wp/wp8741254.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: right top;
+            height: 400px;
+            background-size: cover;
+        }
+
+        .navbar1 :hover {
+            border: 1px solid white;
+            transition: all ease 0.5s;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            padding: 4% 2%;
+            box-sizing: border-box;
+            height: 85vh;
+        }
+
+        .box {
+            flex: 1;
+            overflow: hidden;
+            transition: .5s;
+            margin: 0 2%;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, .1);
+            line-height: 0;
+        }
+
+        .box>img {
+            width: 200%;
+            height: calc(100% - 10vh);
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .box>span {
+            font-size: 3.8vh;
+            display: block;
+            text-align: center;
+            height: 10vh;
+            line-height: 2.6;
+        }
+
+        .box:hover {
+            flex: 1 1 50%;
+        }
+
+        .box:hover>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+
+        /* pokemone pictures */
+
+        .pokemon {
+            width: 200px;
+            height: 200px;
+            /* center content using flex box */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* overlay */
+            box-shadow: 0 0 0 100px inset, 0 0 5px grey;
+            /* hover out transition */
+            transition: box-shadow 1s;
+            float: left;
+            margin: 10px;
+        }
+
+        /* pokemone names */
+        .pokemon::after {
+            width: 80%;
+            height: 80%;
+            display: block;
+            white-space: pre;
+            font: 15pt 'sigmar one';
+            color: white;
+            border: 2px solid;
+            text-align: center;
+            /* center content using flex box */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* hover out transition */
+            transition: opacity 1s .5s;
+        }
+
+        /* reveal pokemone picture on hover */
+        .pokemon:hover {
+            box-shadow: 0 0 0 5px inset, 0 0 5px grey, 0 0 10px grey inset;
+            transition: box-shadow 1s;
+        }
+
+        /* hide pokemone name on hover */
+        .pokemon:hover::after {
+            opacity: 0;
+            transition: opacity .5s;
+        }
+
+        #bulbasaur {
+            background-image: url(https://wallpapercave.com/dwp1x/wp6784523.jpg);
+            color: rgba(71, 121, 94, .9);
+        }
+
+        #charmander {
+            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Q2mBY9sFwG5uxMZ3DMILdQHaKr%26pid%3DApi&f=1);
+            color: rgba(221, 86, 63, .9);
+        }
+
+        #squirtle {
+            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.4fAh9-yxTtVDBQIIoWi35AHaEo%26pid%3DApi&f=1);
+            color: rgba(65, 102, 114, .9);
+        }
+
+        #pikachu {
+            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.e_BO-RiMDfCkWp1OW3V2yQHaEK%26pid%3DApi&f=1 );
+            color: rgba(179, 152, 98, .9);
+        }
+
+        #wrapper {
+            width: 500px;
+            height: 500px;
+            margin: auto;
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Oswald);
+        @import url(https://fonts.googleapis.com/css?family=Quattrocento);
+
+        .snip1361 {
+            font-family: 'Quattrocento', Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+            min-width: 230px;
+            max-width: 315px;
+            width: 100%;
+            color: #141414;
+            text-align: left;
+            line-height: 1.4em;
+            font-size: 16px;
+        }
+
+        .snip1361 * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all 0.35s ease;
+            transition: all 0.35s ease;
+        }
+
+        .snip1361 img {
+            max-width: 100%;
+            vertical-align: top;
+        }
+
+        .snip1361 figcaption {
+            position: absolute;
+            top: calc(77%);
+            width: 100%;
+            background-color: #ffffff;
+            padding: 15px 25px 65px;
+        }
+
+        .snip1361 figcaption:before {
+            position: absolute;
+            content: '';
+            z-index: 2;
+            bottom: 100%;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-image: -webkit-linear-gradient(top, transparent 0%, #ffffff 100%);
+            background-image: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+        }
+
+        .snip1361 h3,
+        .snip1361 p {
+            margin: 0 0 10px;
+        }
+
+        .snip1361 h3 {
+            font-weight: 300;
+            font-size: 1.4em;
+            line-height: 1.2em;
+            font-family: 'Oswald', Arial, sans-serif;
+            text-transform: uppercase;
+        }
+
+        .snip1361 p {
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .snip1361 a {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .snip1361:hover figcaption,
+        .snip1361.hover figcaption {
+            top: 80px;
+        }
+
+        .icons_desgining {
+            margin-left: 20px;
+            border-radius: 20px;
+            background: 0.5px solid black;
+            box-shadow: -3px 2px 18px 2px black;
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+        .para {
+            border-right: solid 3px rgba(0, 255, 0, .75);
+            white-space: nowrap;
+            overflow: hidden;
+            font-family: times of 'Times New Roman', Times, serif;
+            font-size: 25px;
+            color: black;
+            text-align: center;
+            
+        }
+
+        /* Animation */
+        .para {
+            animation: animated-text 10s steps(50, end) 1s 1 normal both,
+                animated-cursor 600ms steps(50, end) infinite;
+        }
+
+        /* text animation */
+        @keyframes animated-text {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 1200px;
+            }
+        }
+
+        /* cursor animations */
+        @keyframes animated-cursor {
+            from {
+                border-right-color: rgba(0, 255, 0, .75);
+            }
+
+            to {
+                border-right-color: transparent;
+            }
+        }
+
+        .h4 {
+            text-align: justify;
+            font-family: cursive;
+        }
+
+        .h {
+            text-align: justify;
+            font-family: times of roman;
+            font-size: 1.2rem;
+            color: black;
+        }
+
+        .heading {
+            text-align: center;
+            padding: 16px;
+            margin: 0;
+        }
+
+        .lineUp {
+            animation: 5s anim-lineUp ease-out infinite;
+        }
+
+        @keyframes anim-lineUp {
+            0% {
+                opacity: 0;
+                transform: translateY(80%);
+            }
+
+            20% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+        }
+
+        .footer1 {
+            font-size: 20px;
+            color: white;
+        }
+
+        .footer_style {
+            border-top: 1px solid white;
+            background-color: black;
+        }
+
+        .about {
+            height: 80px;
+            margin-bottom: 50px;
+            font-size: 30px;
+            font-family: times of roman;
+            transitions: all ease 0.5s;
+        }
+
+        .about:hover {
+            transitions: all ease 1s;
+            border-radius: 50px;
+            background: white;
+            color: black;
+            font-family: times of family;
+        }
+
+        .our-services {
+            margin-top: 75px;
+            padding-bottom: 30px;
+            padding: 0 60px;
+            min-height: 198px;
+            min-width: 380px;
+            text-align: center;
+            border-radius: 10px;
+            background-color: #fff;
+            transition: all .4s ease-in-out;
+            box-shadow: 0 0 25px 0 rgba(20, 27, 202, 5);
+        }
+
+        .our-services .icon {
+            margin-bottom: -21px;
+            transform: translateY(-50%);
+            text-align: center;
+        }
+
+        .our-services:hover h4,
+        .our-services:hover p {
+            color: #fff;
+        }
+
+        .speedup:hover {
+            box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+            cursor: pointer;
+            background-image: linear-gradient(-45deg, #fb0054 0%, #f55b2a 100%);
+        }
+
+        .settings:hover {
+            box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+            cursor: pointer;
+            background-image: linear-gradient(-45deg, #34b5bf 0%, #210c59 100%);
+        }
+
+        .privacy:hover {
+            box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+            cursor: pointer;
+            background-image: linear-gradient(-45deg, #3615e7 0%, #44a2f6 100%);
+        }
+
+
+        .backups:hover {
+            box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+            cursor: pointer;
+            background-image: linear-gradient(-45deg, #fc6a0e 0%, #fdb642 100%);
+        }
+
+        .ssl:hover {
+            box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+            cursor: pointer;
+            background-image: linear-gradient(-45deg, #8d40fb 0%, #5a57fb 100%);
+        }
+
+        .database:hover {
+            box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+            cursor: pointer;
+            background-image: linear-gradient(-45deg, #27b88d 0%, #22dd73 100%);
+        }
+
+        .webcard {
+            display: flex;
+        }
+
+        .freecards {
+            min-height: 350px;
+            width: 250px;
+            margin-left: 20px;
+            box-shadow: 1px 1px 8px 0.5px inset #195a54;
+            transition: transform .2s;
+        }
+        .freecards:hover {
+            transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            box-shadow: 1px 1px 8px 0.5px  #195a54;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        .body2 {
+            min-width: 400px;
+            min-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container2 .card2 {
+            max-width: 300px;
+            height: 215px;
+            margin-left: 30px;
+            margin-top: 50px;
+            padding: 20px 15px;
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out
+        }
+
+        .container2 .card2:hover {
+            height: 450px
+        }
+
+        .container2 .card2 .imgContainer {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            top: -50px;
+            left: 10px;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2)
+        }
+
+        .container2 .card2 .imgContainer img {
+            max-width: 100%;
+            border-radius: 4px
+        }
+
+        .container2 .card2 .content2 {
+            position: relative;
+            margin-top: -140px;
+            padding: 10px 15px;
+            text-align: center;
+            color: #111;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease-in-out
+        }
+
+        .container2 .card2:hover .content2 {
+            visibility: visible;
+            opacity: 1;
+            margin-top: -40px;
+            transition-delay: 0.3s
+        }
+
+        @media (max-width: 330px) {
+            .container2 .card2 .imgContainer {
+                left: -2px
+            }
+        }
+
+        .mainCode {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .h10 {
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .img10 {
+            height: auto;
+            max-width: 100%;
+            vertical-align: middle;
+        }
+
+        .btn10 {
+            color: #ffffff;
+            padding: 0.8rem;
+            font-size: 14px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            font-weight: 400;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+        }
+
+        .btn10:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .cards10 {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .cards_item {
+            display: flex;
+            padding: 1rem;
+            transition: transform .2s;
+        }
+        .cards_item:hover{
+            transform: scale(1.1);
+        }
+        @media (min-width: 40rem) {
+            .cards_item {
+                width: 50%;
+            }
+        }
+
+        @media (min-width: 56rem) {
+            .cards_item {
+                width: 33.3333%;
+            }
+        }
+
+        .card10 {
+            background-color: white;
+            border-radius: 0.25rem;
+            box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .card_content {
+            padding: 1rem;
+            background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+        }
+
+        .card_title {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            margin: 0px;
+        }
+
+        .card_text {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+        }
+        .animate-charcter
+			{
+				text-transform: uppercase;
+				margin-top: 100px;
+				background-image: linear-gradient(
+					-225deg,
+					#231557 0%,
+					#44107a 29%,
+					#ff1361 67%,
+					#fff800 100%
+				);
+				background-size: auto auto;
+				background-clip: border-box;
+				background-size: 200% auto;
+				color: #fff;
+				background-clip: text;
+				text-fill-color: transparent;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				animation: textclip 2s linear infinite;
+				display: inline-block;
+				font-size: 50px;
+			}
+			@keyframes textclip 
+			{
+				to {
+					    background-position: 200% center;
+                    }
+			}	
+            .card_os{
+                height: 200px;
+                width: 250px;
+                transition: .5s;
+                margin-left:60px;
+                
+            }	
+           
+            .img_os{
+                height: 150px;
+                width: 250px;
+                opacity: 0.7;
+                transition: .5s;
+            }
+            .img_os:hover{
+                opacity: 1.5;
+                transition: .5s;
+                border-radius: 5px 5px 0px 0px;
+            }
+            .card_text{
+                transition: transform .2s;
+                text-align: justify;
+            }
+            .card_text:hover{
+                transition: .5s;
+                box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+                border-radius: 5px;
+                transform: scale(1.1);
+            }
+            #id_gender,#id_job_city{
+                display: inline-flex;
+            }
+            #id_gender >li{
+                padding-left: 15px;
+            }
+            #id_job_city >li{
+                padding-left: 15px;
+            }
+            
+    .pd1 {
+        position: relative;
+        right: -10px;
+        top: 30px;
+        box-shadow: 2px 10px 10px 0.2px #000;
+    }
+    
+    .pd1:hover {
+        background: rgb(168, 198, 188);
+        border: #1b1f29 solid 1px;
+        transform-style: preserve-3d;
+        transform: scale(1.2);
+    }
+    
+    .pd2 {
+        position: relative;
+        right: -5px;
+        top: 10px;
+        box-shadow: 2px 10px 10px 0.2px #000;
+    }
+    
+    .pd2:hover {
+        background: rgb(168, 198, 188);
+        border: #1b1f29 solid 1px;
+        transform-style: preserve-3d;
+        transform: scale(1.2);
+    }
+    
+    .pd3 {
+        position: relative;
+        left: -5px;
+        top: 10px;
+        box-shadow: 2px 10px 10px 0.2px #000;
+    }
+    
+    .pd3:hover {
+        background: rgb(168, 198, 188);
+        border: #1b1f29 solid 1px;
+        transform-style: preserve-3d;
+        transform: scale(1.2);
+    }
+    
+    .pd4 {
+        position: relative;
+        left: -10px;
+        top: 20px;
+        box-shadow: 2px 10px 10px 0.2px #000;
+    }
+    
+    .pd4:hover {
+        background: rgb(168, 198, 188);
+        border: #1b1f29 solid 1px;
+        transform-style: preserve-3d;
+        transform: scale(1.2);
+    }
+    
+    .pd_middle {
+        box-shadow: 2px 10px 10px 0.2px #000;
+    }
+    
+    .pd_middle:hover {
+        background: rgb(168, 198, 188);
+        border: #1b1f29 solid 1px;
+        transform-style: preserve-3d;
+        transform: scale(1.3);
+    }
+    .news_heading{
+        font-weight:bolder;
+        font-size:100px;
+        background:rgba(220,200,180,0.7);
+        
+
+    }
+    
+    .pd_style {
+        padding: 50px;
+        border-bottom:5px solid rgba(180,180,180,0.7);
+
+    }
+    .template_card{
+        width:250px; 
+        height:200px; 
+        float:left; 
+        margin-left:20px; 
+        margin-top:20px; 
+        border:2px groove blue; 
+    }
+
+    </style>
+    <script>
+        $(".hover").mouseleave(
+            function () {
+                $(this).removeClass("hover");
+            }
+        );
+            $( function() {
+                $( "#datepicker" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true
+                });
+            } );
+    </script>
+</head>
+
+<body>
+    <div class="row navbar fixed-top" style="background:black;">
+        <!--header start-->
+        <div class="col-sm-5">
+            <h1 class="text-light mt-2">█▓▒­░⡷⠂MIЖDФC⠐⢾░▒▓█</h1>
+        </div>
+        <div class="col-sm-7">
+            <nav class="navbar  navbar-expand-lg navbar-light" style="margin-left:15px;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mt-3" id="navbarNav">
+                    <ul class="navbar-nav" style="font-family:Times of roman">
+                        <li class="nav-item">
+                            <a class="nav-link text-light navbar1 active" href="{% url 'home' %}"><span
+                                    style="border-bottom:2px solid white;">HOME</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light navbar1" href="{% url 'news' %}"><span
+                                    style="border-bottom:2px solid white;">NEWS</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light navbar1" href="{% url 'courses' %}"><span
+                                    style="border-bottom:2px solid white;">COURSES</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light navbar1" href="{% url 'Os' %}"><span
+                                    style="border-bottom:2px solid white;">OPERATING SYSTEM</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light navbar1" href="{% url 'videogallery' %}"><span
+                                    style="border-bottom:2px solid white;">VIDEO GALLERY</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light navbar1" href="{% url 'resume' %}"><span
+                                    style="border-bottom:2px solid white;">RESUMES</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light navbar1" href="{% url 'contactus' %}"><span
+                                    style="border-bottom:2px solid white;">CONTACT US</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light navbar1 btn btn-primary" href="http://127.0.0.1:8000/admin/login/?next=/admin/">Admin</a>
+                        </li>    
+                    </ul>
+                </div>
+                <!--header end-->
+            </nav>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <!--footer start-->
+    <div class="row footer_style">
+        <div class="col-sm-4 footer1">
+            <center>
+                <h4 class="text-uppercase fw-bold mb-4">
+                    CONTACT
+                </h4>
+            </center>
+            <br>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                <path
+                    d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+            </svg>
+            <b style="margin-left:10px;">mixdoc588777@gmail.com</b><br><br>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+            </svg>
+            <b style="margin-left:10px;">+91-9696023202</b><br><br>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+            </svg>
+            <b style="margin-left:10px; font-size:18px;"> AMBITION INSTITUTE OF TECHNOLOGY, PADAV, UP</b><br><br>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin"
+                viewBox="0 0 16 16">
+                <path
+                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+            </svg>
+            <b style="margin-left:10px; font-size:18px;">MixDocument Organisation</b>
+        </div>
+        <div class="col-sm-4 mt-1">
+            <center>
+                <h4 class="text-uppercase text-light fw-bold mb-4">
+                    LOCATION
+                </h4>
+                <div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.8855106355304!2d83.05473771508933!3d25.308050383844773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e30203b37db8b%3A0xab141428b11aaaeb!2sAmbition%20Institute%20of%20Technology%20(Best%20Polytechnic%20College%20%26%20Fashion%20Designing%20Institute%20Varanasi)!5e0!3m2!1sen!2sin!4v1650382453489!5m2!1sen!2sin"
+                        width="400" height="250" style="border:0; border-radius:5px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </center>
+        </div>
+        <div class="col-sm-2 text-light">
+            <h4 class="text-uppercase fw-bold mb-4">
+                PRODUCT
+            </h4>
+            <p>
+                <a href="#!" class="text-reset">RUBY</a>
+            </p>
+            <p>
+                <a href="#!" class="text-reset">OPERATING SYSTEM</a>
+            </p>
+            <p>
+                <a href="#!" class="text-reset">REACT</a>
+            </p>
+            <p>
+                <a href="#!" class="text-reset">LARAVEL</a>
+            </p>
+        </div>
+        <div class="col-sm-2 text-light">
+            <!-- Links -->
+            <h4 class="text-uppercase fw-bold mb-4">
+                Useful links
+            </h4>
+            <p>
+                <a href="http://127.0.0.1:8000/home/" class="text-reset">HOME</a>
+            </p>
+            <p>
+                <a href="http://127.0.0.1:8000/home/" class="text-reset">ABOUT</a>
+            </p>
+            <p>
+                <a href="http://127.0.0.1:8000/resume/" class="text-reset">RESUMES</a>
+            </p>
+            <p>
+                <a href="http://127.0.0.1:8000/news/" class="text-reset">NEWS</a>
+            </p>
+            <p>
+                <a href="http://127.0.0.1:8000/Os/" class="text-reset">OPERATING SYSTEM</a>
+            </p>
+            <p>
+                <a href="http://127.0.0.1:8000/courses/" class="text-reset">COURSES</a>
+            </p>
+            <p>
+                <a href="http://127.0.0.1:8000/contactus/" class="text-reset">CONTACT US</a>
+            </p>
+            <p>
+                <a href="http://127.0.0.1:8000/admin/login/?next=/admin/" class="text-reset">ADMIN</a>
+            </p>
+        </div>
+        <!-- Copyright -->
+        <div class="text-center text-light p-3 mt-3" style="background-color: rgba(0, 0, 0, 0.2); font-size:25px;">
+            © 2022 Copyright :
+            <b class="text-white">MixDoc.tech</b>
+        </div>
+        <!-- Copyright -->
+    </div>
+    <!--footer end-->
+
+</body>
+
+</html>

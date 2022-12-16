@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5" style="margin-bottom:480px;">
+    <div class="row">
+        <h1 class="alert-danger text-center p-3">Resume Uploader</h1>
+        <div class="col-sm-8">
+            <form action="" method="post" enctype="multipart/form-data" class="shadow p-5">
+                {% csrf_token %}
+                {% for fm in form %}
+                    <div class="form-group mb-3">
+                        {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                    </div>
+                {% endfor %}
+                <input type="submit" value="Submit" class="btn btn-danger">
+                {% if form.non_field_errors %}
+                    {% for error in form.non_filed_errors %}
+                        <p class="alert alert-danger my-3">{{error}}</p>
+                    {% endfor %}
+                {% endif %}
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <h4 class="text-center mb-3"><u>List Of Candidate</u></h4>
+            {% for candidate in candidates %}
+                {{candidate.id}} : <a href="{% url 'candidate' candidate.id %}">{{candidate.name}}</a>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-bottom: 200px;">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1><span style="border-bottom:2px groove black; font-family:'Times New Roman', Times, serif;">Template</span> :</h1>
+            {% if resume %}
+            {% for x in resume %}
+            <div class="card bg-dark  text-white template_card">
+                <img class="card-img" src="/{{x.temp_pic}}" alt="Card image" style="width:245px; height:195px;">
+                <div class="card-img">
+                    <a href="{{x.temp_download}}" download class="btn btn-danger"  style="margin-top:-70px; margin-left:200px">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+</svg>
+                    </a><span></span>
+                    <script>
+                        let button = document.querySelector("a");
+               button.addEventListener("click",()=>{
+                   const span = document.querySelector("a span");
+                   button.style.paddingRight = '10px';
+                   span.style.visibility = "visible";
+                   setTimeout(()=>{
+                       span.style.visibility="hidden";
+                       button.style.transition = "1s ease-in-out"; 
+                       button.style.paddingRight = "0px";
+                   },1000);
+               })       
+                    </script>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

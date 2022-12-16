@@ -1,0 +1,52 @@
+<html>
+{% load static %}
+{% load myfilter %}
+    <head>
+        <title>Resume</title>
+         <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js.map' %}"></script>
+    <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'images/icon.jpg' %}">
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid mt-1">
+    <h1 class="alert-danger text-center p-3">Resume</h1>   
+    <div class="row mt-3">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-8 shadow p-5 offset-sm-1">
+           <p class="">Application No: {{candidate.id}}</p>
+           <img src="{{candidate.profile_image.url}}" alt=""
+           class="img-fluid img-thumbnail float-end" width="150" height="150">
+           <p class="mt-4">Name: {{candidate.name}}</p>
+           <p>Date of Birth: {{candidate.dob}}</p>
+           <p>Gender: {{candidate.gender}}</p> 
+           <p>Address: {{candidate.locality}}, {{candidate.city}}, {{candidate.state}} - {{candidate.pin}}</p>
+           <p>Mobile No: {{candidate.mobile}}</p>
+           <p>Email ID: {{candidate.email}}</p>
+           <p>Preferred Job Cities: {{candidate.job_city|remove_special:"[]'"}}</p>
+           <p>Attachment: <a href="{{candidate.my_file.url}}" download>Download File<span></span></a></p>
+           <script>
+               let button = document.querySelector("a");
+               button.addEventListener("click",()=>{
+                   const span = document.querySelector("a span");
+                   button.style.paddingRight = '10px';
+                   span.style.visibility = "visible";
+                   setTimeout(()=>{
+                       span.style.visibility="hidden";
+                       button.style.transition = "1s ease-in-out"; 
+                       button.style.paddingRight = "0px";
+                   },1000);
+               })
+           </script>
+           <button onclick="window.print()" class="btn btn-dark mt-5">Print Resume</button>
+        </div>
+    </div>
+</div>
+    </body>
+</html>

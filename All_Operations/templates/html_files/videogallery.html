@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row mt-5">
+    <!--YouTube Search Start-->
+    <div class="col-sm-12 mt-5 text-center">
+        <h2><span style=" font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">SEARCH
+                VIDEOS IN</span> <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                class="bi bi-youtube" viewBox="0 0 16 16" style="color:red;">
+                <path
+                    d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+            </svg><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">YouTube</b>
+            <sup>IN</sup>
+        </h2>
+        <h4 class="mt-4"><b>Search Videos And Select Any Video To Open In <span
+                    style="border-bottom: 2px groove red;">Youtube</span></b></h4>
+        <form action="" method="post" class="mt-5">
+            {% csrf_token %}
+            <b style="font-size: 30px;">{{form}}</b><button class="btn btn-danger" type="submit"
+                style="font-size: 25px; margin-top:-15px; margin-left:10px;">SEARCH</button>
+        </form><br>
+
+        {% for result in results %}
+        <a href="{{result.link}}" target="_blank">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img class="img-fluid" src="{{result.thumbnail}}" alt="">
+
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="p-0 m-0">{{result.title}}</h3>
+                            <b>
+                                <u>
+                                    <h5 class="p-0 m-0">{{result.channel}}</h5>
+                                </u>
+                            </b>
+                            <h6 class="p-0 m-1">{{result.description}}</h6>
+                            <b>
+                                <h6 class="ml-0 mt-3">{{result.duration}}</h6>
+                                <h6 class="ml-0 mt-1">{{result.views}}</h6>
+                                <h6 class="ml-0 mt-1">{{result.published}}</h6>
+                            </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        <br>
+    </div>
+</div>
+<!--Youtube search end-->
+<div class="row mt-2">
+    <!--Youtube Cards Fetching From DB Start-->
+    <div class="mainCode">
+        <h1 class="mt-4"><span style="border-bottom: 2px groove black;">Video Gallery</span></h1>
+        <ul class="cards10">
+            <li class="cards_item">
+                <div class="card10">
+                    <div class="card_image">
+                        <iframe width="400" height="200"
+                            src="https://www.youtube-nocookie.com/embed/PtQiiknWUcI?start=6"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">Django Tutorial 7 Hours |</h2>
+                        <h5 class="card_text mt-3" style="font-weight: bold;">Build a discord-like application with
+                            Python Django. | Visit the
+                            finished application at</h5>
+                        <p class="text-light">
+                            Traversy Media <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"
+                                style="background: #aaaaaa; border-radius:20px;">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                        </p>
+                        <p class="text-light">
+                            1M views . 1 year
+                        </p>
+                        <a href="https://www.youtube-nocookie.com/embed/PtQiiknWUcI?start=6" style="text-decoration: none;"><button class="btn10 card_btn">Go To Page</button></a>
+                    </div>
+                </div>
+            </li>
+            <li class="cards_item">
+                <div class="card10">
+                    <div class="card_image">
+                        <iframe width="400" height="200"
+                            src="https://www.youtube-nocookie.com/embed/t_ispmWmdjY?start=5"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">Ruby Programming Language - Full Course |</h2>
+                        <h5 class="card_text mt-3" style="font-weight: bold;">Learn the Ruby programming language in
+                            this full course / tutorial.</h5>
+                        <p class="text-light">
+                            freeCodeCamp.org <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"
+                                style="background: #aaaaaa; border-radius:20px;">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                        </p>
+                        <p class="text-light">
+                            7M views . 3 year
+                        </p>
+                        <a href="https://www.youtube-nocookie.com/embed/t_ispmWmdjY?start=5" style="text-decoration: none;"><button class="btn10 card_btn">Go To Page</button></a>
+                    </div>
+                </div>
+            </li>
+            <li class="cards_item">
+                <div class="card10">
+                    <div class="card_image">
+                        <iframe width="400" height="200" src="https://www.youtube-nocookie.com/embed/ImtZ5yENzgE"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">Laravel PHP Framework Tutorial |</h2>
+                        <h5 class="card_text mt-3" style="font-weight: bold;">Learn Laravel 5.8 by creating an Instagram
+                            clone in this full tutorial course for beginners.</h5>
+                        <p class="text-light">
+                            freeCodeCamp.org <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"
+                                style="background: #aaaaaa; border-radius:20px;">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                        </p>
+                        <p class="text-light">
+                            1.8M views . 3 year
+                        </p>
+                        <a href="https://www.youtube-nocookie.com/embed/ImtZ5yENzgE" style="text-decoration: none;"><button class="btn10 card_btn">Go To Page</button></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--Youtube Cards Fetching From DB Start-->
+</div>
+<div class="row">
+    <div class="mainCode">
+        <ul class="cards10">
+            <li class="cards_item">
+                <div class="card10">
+                    <div class="card_image">
+                        <iframe width="400" height="200" src="https://www.youtube-nocookie.com/embed/F18Rxw6ftcM"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">React Tutorial in Hindi for Beginners |</h2>
+                        <h5 class="card_text mt-3" style="font-weight: bold;">Complete React JS Tutorial in Hindi with
+                            Project |</h5>
+                        <p class="text-light">
+                            Tech Gun <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                class="bi bi-check" viewBox="0 0 16 16"
+                                style="background: #aaaaaa; border-radius:20px;">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                        </p>
+                        <p class="text-light">
+                            158k views . 4 month ago
+                        </p>
+                        <a href="https://www.youtube-nocookie.com/embed/F18Rxw6ftcM" style="text-decoration: none;"><button class="btn10 card_btn">Go To Page</button></a>
+                    </div>
+                </div>
+            </li>
+            <li class="cards_item">
+                <div class="card10">
+                    <div class="card_image">
+                        <iframe width="400" height="200" src="https://www.youtube-nocookie.com/embed/k5E2AVpwsko"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">Angular Tutorial for Beginners: Learn Angular & TypeScript</h2>
+                        <h5 class="card_text mt-3" style="font-weight: bold;"> This video will cover an Angular
+                            Project in Hindi</h5>
+                        <p class="text-light">
+                            programming with mosh <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"
+                                style="background: #aaaaaa; border-radius:20px;">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                        </p>
+                        <p class="text-light">
+                            3.2M views . 4 year
+                        </p>
+                        <a href="https://www.youtube-nocookie.com/embed/k5E2AVpwsko" style="text-decoration: none;"><button class="btn10 card_btn">Go To Page</button></a>
+                    </div>
+                </div>
+            </li>
+            <li class="cards_item">
+                <div class="card10">
+                    <div class="card_image">
+                        <iframe width="400" height="200" src="https://www.youtube-nocookie.com/embed/comQ1-x2a1Q"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">Swift Tutorial - Full Course for Beginners |</h2>
+                        <h5 class="card_text mt-3" style="font-weight: bold;">Learn how to code with Swift in this full
+                            tutorial course for beginners. </h5>
+                        <p class="text-light">
+                            freeCodeCamp.org <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"
+                                style="background: #aaaaaa; border-radius:20px;">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                        </p>
+                        <p class="text-light">
+                            472K views . 3 year ago
+                        </p>
+                        <a href="https://www.youtube-nocookie.com/embed/comQ1-x2a1Q" style="text-decoration: none;"><button class="btn10 card_btn">Go To Page</button></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="mainCode">
+        <ul class="cards10">
+            <li class="cards_item">
+                <div class="card10">
+                    <div class="card_image">
+                        <iframe width="400" height="200" src="https://www.youtube-nocookie.com/embed/NDto4BVHz4s"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">
+                            R Programming Full Tutorial for Beginner (2022)</h2>
+                        <h5 class="card_text mt-3" style="font-weight: bold;">With this R programming language tutorial
+                            for beginners.</h5>
+                        <p class="text-light">
+                            WsCube Tech <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"
+                                style="background: #aaaaaa; border-radius:20px;">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                        </p>
+                        <p class="text-light">
+                            1.15M views . 1 year ago
+                        </p>
+                        <a href="https://www.youtube-nocookie.com/embed/NDto4BVHz4s" style="text-decoration: none;"><button class="btn10 card_btn">Go To Page</button></a>
+                    </div>
+                </div>
+            </li>
+            <li class="cards_item">
+                <div class="card10">
+                    <div class="card_image">
+                        <iframe width="400" height="200" src="https://www.youtube-nocookie.com/embed/oPH7rfJel9w"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">Firebase Database Tutorial for Android App Development</h2>
+                        <h5 class="card_text mt-3" style="font-weight: bold;"> This video covers:
+                            Complete firebase tutorial
+                            firebase tutorial for beginners</h5>
+                        <p class="text-light">
+                            forMyScholars <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"
+                                style="background: #aaaaaa; border-radius:20px;">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                        </p>
+                        <p class="text-light">
+                            14k views . 10 months
+                        </p>
+                        <a href="https://www.youtube-nocookie.com/embed/oPH7rfJel9w" style="text-decoration: none;"><button class="btn10 card_btn">Go To Page</button></a>
+                    </div>
+                </div>
+            </li>
+            <li class="cards_item">
+                <div class="card10">
+                    <div class="card_image">
+                        <iframe width="400" height="200" src="https://www.youtube-nocookie.com/embed/kdPtNMb8tPw"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">.Net Tutorial | .Net Framework Tutorial | Asp.net Tutorial</h2>
+                        <h5 class="card_text mt-3" style="font-weight: bold;">In this .Net Tutorial video, you will
+                            learn everything about .net </h5>
+                        <p class="text-light">
+                            intellipaat <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"
+                                style="background: #aaaaaa; border-radius:20px;">
+                                <path
+                                    d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                            </svg>
+                        </p>
+                        <p class="text-light">
+                            463K views . 1 year ago
+                        </p>
+                        <a href="https://www.youtube-nocookie.com/embed/kdPtNMb8tPw" style="text-decoration: none;"><button class="btn10 card_btn">Go To Page</button></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
